@@ -201,7 +201,7 @@ def slash():
     #TODO: validate the token
     command = request.form.get('command', None)
     text = request.form.get('text', None)
-    user = request.form.get('user', None)
+    user = request.form.get('user_id', None)
     # Validate the request parameters
     if not token:  # or some other failure condition
         abort(400)
@@ -253,7 +253,7 @@ def intro():
     #TODO: validate the token
     command = request.form.get('command', None)
     text = request.form.get('text', None)
-    user = request.form.get('user', None)
+    user = request.form.get('user_id', None)
     # Validate the request parameters
     if not token:  # or some other failure condition
         abort(400)
