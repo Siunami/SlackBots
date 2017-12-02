@@ -6,7 +6,6 @@ import os
 import message
 
 from slackclient import SlackClient
-import datetime
 
 import Airtable
 
@@ -41,7 +40,7 @@ class Bot(object):
         # an oauth token. We can connect to the client without authenticating
         # by passing an empty string as a token and then reinstantiating the
         # client with a valid OAuth token once we have one.
-        self.client = SlackClient("xoxb-276444776865-5gpsZsqzwwWE0o2rGD1dsth8")
+        self.client = SlackClient(os.environ.get("OAUTH_KEY"))
         # We'll use this dictionary to store the state of each message object.
         # In a production envrionment you'll likely want to store this more
         # persistantly in  a database.
@@ -102,7 +101,6 @@ class Bot(object):
 
     def addSkill(self, userid,textresponse):
         skills = textresponse.split()
-        print(datetime.date())
         # messageObj = message.Message()
         # admin = self.open_dm('U7YPRCW1K')
         print(userid)
@@ -128,7 +126,8 @@ class Bot(object):
                                       channel="#intros",
                                       text=textresponse,
                                       # attachments=text, #messageObj.create_attachments2(text),
-                                      user=userid
+                                      user=userid,
+                                      as_user=True
                                     )
 
     def slashFeedback(self, userid,textresponse):
