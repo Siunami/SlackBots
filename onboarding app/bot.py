@@ -6,6 +6,7 @@ import os
 import message
 
 from slackclient import SlackClient
+import datetime
 
 
 # To remember which teams have authorized your app and what tokens are
@@ -96,6 +97,7 @@ class Bot(object):
 
     def addSkill(self, userid,textresponse):
         skills = textresponse.split()
+        print(datetime.date())
         # messageObj = message.Message()
         # admin = self.open_dm('U7YPRCW1K')
         print(userid)
